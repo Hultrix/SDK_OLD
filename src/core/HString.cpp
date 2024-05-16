@@ -2,7 +2,10 @@
 
 namespace Ht {
 
-HString::HString() {
+HString::HString() : m_data("") {
+}
+
+HString::HString(const char *str) : m_data(str) {
 }
 
 void HString::append(const std::string& value) {

@@ -17,6 +17,14 @@ add_library(core
     )
 
 # Unit tests
+# HObject test
 add_executable(Test1 tests/test1.cpp)
 target_link_libraries(Test1  core)
 
+# HList using int
+add_executable(Test2 tests/test2.cpp)
+target_link_libraries(Test2  core)
+
+# HList using HString
+add_executable(Test3 tests/test3.cpp)
+target_link_libraries(Test3  core)
