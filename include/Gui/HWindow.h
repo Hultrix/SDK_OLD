@@ -1,5 +1,6 @@
 #pragma once
 
+#include "HObject.h"
 #include "HSize.h"
 #include "HCursor.h"
 #include "HString.h"
@@ -8,17 +9,8 @@
 
 namespace Ht {
 
-enum class ScreenOrientation {
-    PortraitOrientation,
-    LandscapeOrientation
-};
 
-enum class WindowFlags {
-    Window,
-    Dialog
-};
-
-class HWindow {
+class HWindow : public HObject {
 public:
     HWindow();
 
@@ -32,6 +24,7 @@ public:
     bool isTopLevel() const;
     HSize maximumSize() const;
     HSize minimumSize() const;
+    void setMaximumSize(const HSize& size);
     int maximumHeight() const;
     double opacity() const;
     void setOpacity(double opacity);
@@ -39,9 +32,19 @@ public:
     void setTitle(const HString& title);
 
 private:
+    HSize baseSize_;
+    ScreenOrientation contentOrientation_;
+    HCursor cursor_;
+    HString filePath_;
+    WindowFlags flags_;
+    HRect frameGeometry_;
+    HMargins frameMargins_;
+    bool isTopLevel_;
+    HSize maximumSize_;
+    HSize minimumSize_;
     double opacity_;
     HString title_;
 };
 
-} // namespace Ht
+}
 

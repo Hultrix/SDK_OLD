@@ -2,50 +2,63 @@
 
 namespace Ht {
 
-HWindow::HWindow() : opacity_(1.0), title_("Untitled") {}
+HWindow::HWindow()
+    : HObject(nullptr), 
+      baseSize_(800, 600),
+      contentOrientation_(ScreenOrientation::PortraitOrientation),
+      cursor_(HCursorShape::Arrow),
+      filePath_(""),
+      flags_(WindowFlags::Window),
+      frameGeometry_(100, 100, 800, 600),
+      frameMargins_(10, 10, 10, 10),
+      isTopLevel_(true),
+      maximumSize_(/* default max size */),
+      minimumSize_(/* default min size */),
+      opacity_(1.0),
+      title_("") {}
 
 HSize HWindow::baseSize() const {
-    return HSize(800, 600);
+    return baseSize_;
 }
 
 ScreenOrientation HWindow::contentOrientation() const {
-    return ScreenOrientation::PortraitOrientation;
+    return contentOrientation_;
 }
 
 HCursor HWindow::cursor() const {
-    return HCursor(HCursorShape::Arrow);
+    return cursor_;
 }
 
 HString HWindow::filePath() const {
-    return HString("C:/path/to/window");
+    return filePath_;
 }
 
 WindowFlags HWindow::flags() const {
-    return WindowFlags::Window;
+    return flags_;
 }
 
 HRect HWindow::frameGeometry() const {
-    return HRect(100, 100, 800, 600);
+    return frameGeometry_;
 }
 
 HMargins HWindow::frameMargins() const {
-    return HMargins(10, 10, 10, 10);
+    return frameMargins_;
 }
 
 bool HWindow::isTopLevel() const {
-    return true;
+    return isTopLevel_;
 }
 
 HSize HWindow::maximumSize() const {
-    return HSize(1920, 1080);
+    return maximumSize_;
 }
 
 HSize HWindow::minimumSize() const {
-    return HSize(200, 150);
+    return minimumSize_;
 }
 
 int HWindow::maximumHeight() const {
-    return 1080;
+    return maximumSize_.height(); 
 }
 
 double HWindow::opacity() const {
@@ -62,6 +75,10 @@ HString HWindow::title() const {
 
 void HWindow::setTitle(const HString& title) {
     title_ = title;
+}
+
+void HWindow::setMaximumSize(const HSize& size) {
+  maximumSize_ = size;
 }
 
 } // namespace Ht

@@ -1,11 +1,8 @@
 #pragma once
 
-namespace Ht {
+#include "HNameSpace.h"
 
-enum class HCursorShape {
-    Arrow,
-    Hand
-};
+namespace Ht {
 
 class HCursor {
 public:

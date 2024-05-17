@@ -1,12 +1,9 @@
 #pragma once
+
+#include "HNameSpace.h"
 #include "HString.h"
 
 namespace Ht {
-
-enum class HObjectType {
-    HWidget = 1,
-    HWindow
-};
 
 class HObject {
 public:
@@ -19,7 +16,6 @@ public:
     void setObjectType(HObjectType type);
     bool isWidgetType() const;
     bool isWindowType() const;
-
 private:
     bool m_block; // Whether signals are blocked
     HObject *m_parent;
