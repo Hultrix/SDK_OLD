@@ -1,14 +1,30 @@
 cmake_minimum_required(VERSION 3.28)
 
 # Set the project name
-project(Hultrix)
+project(Hultrix C CXX)
 
 # Set the C++ standard
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Set the C standard
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED True)
+
 # Add include directories
-include_directories(include/Core/ include/Gui/ include/Graphics2D/)
+include_directories(include/Core/ include/Gui/ include/Graphics2D/ thirdparty/include)
+
+# Find and link Boost libraries
+set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
+
+# Specify the paths to the Boost libraries and includes
+set(BOOST_ROOT ${CMAKE_SOURCE_DIR}/thirdparty)
+set(BOOST_LIBRARYDIR ${CMAKE_SOURCE_DIR}/thirdparty/lib)
+
+find_package(Boost 1.85.0 REQUIRED COMPONENTS system filesystem date_time thread unit_test_framework)
+
 
 # Options to build each component
 option(BUILD_CORE "Build Core library" ON)
@@ -17,7 +33,7 @@ option(BUILD_GUI "Build Gui library" ON)
 option(BUILD_TESTS "Build unit tests" ON)
 
 if(BUILD_CORE)
-    add_library(Core 
+    add_library(Core
         src/Core/HObject.cpp
         src/Core/HString.cpp
     )
@@ -57,5 +73,11 @@ if(BUILD_TESTS)
 
     add_executable(test5 tests/test5/test5.cpp)
     target_link_libraries(test5 Core)
+    
+    add_executable(test6 tests/test6/test6.cpp)
+    target_link_libraries(test6 Core Boost::unit_test_framework)
+
+    add_executable(test7 tests/test7/test7.cpp)
+    target_link_libraries(test7 Core Boost::system Boost::filesystem Boost::date_time Boost::thread)
 endif()
 

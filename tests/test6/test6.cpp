@@ -1,5 +1,4 @@
-// Define the test module using the custom macro
-#define HT_TEST_MODULE HObjectTest
+#define BOOST_TEST_MODULE HObjectTest
 #include "HTest.h"
 #include "HObject.h"
 #include "HString.h"
