@@ -42,6 +42,7 @@ if(BUILD_CORE)
         src/Core/HObject.cpp
         src/Core/HString.cpp
         src/Core/HProcessManager.cpp
+        src/Core/HSharedMemory.cpp
     )
 endif()
 
@@ -94,5 +95,8 @@ if(BUILD_TESTS)
     
     add_executable(test10 tests/test10/test10.cpp)
     target_link_libraries(test10 Core)
+    
+    add_executable(test11 tests/test11/test11.cpp)
+    target_link_libraries(test11 Core)
 endif()
 

@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 #include <iostream> // Include for std::ostream
-#include "HNameSpace.h" // Ensure this include is correct
 
 namespace Ht {
 
