@@ -2,11 +2,9 @@
 
 namespace Ht {
 
-HString::HString() : m_data("") {
-}
+HString::HString() : m_data("") {}
 
-HString::HString(const char *str) : m_data(str) {
-}
+HString::HString(const char* str) : m_data(str) {}
 
 void HString::append(const std::string& value) {
     m_data += value;
@@ -28,7 +26,7 @@ void HString::chop(hsizetype n) {
     }
 }
 
-HString HString::chopped(hsizetype len) const & {
+HString HString::chopped(hsizetype len) const& {
     if (len < 0 || static_cast<std::size_t>(len) > m_data.size()) {
         return HString();
     }
@@ -42,11 +40,23 @@ HString HString::chopped(hsizetype len) && {
     return HString(std::move(m_data.substr(0, m_data.size() - len).c_str()));
 }
 
-// Overload the << operator for HString
 std::ostream& operator<<(std::ostream& os, const HString& hstr) {
     os << hstr.m_data;
     return os;
 }
 
+const char* HString::c_str() const {
+    return m_data.c_str();
 }
+
+// Define the equality operators
+bool HString::operator==(const HString& other) const {
+    return m_data == other.m_data;
+}
+
+bool HString::operator==(const char* other) const {
+    return m_data == other;
+}
+
+} // namespace Ht
 

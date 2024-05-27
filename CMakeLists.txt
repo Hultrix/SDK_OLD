@@ -25,6 +25,9 @@ set(BOOST_LIBRARYDIR ${CMAKE_SOURCE_DIR}/thirdparty/lib)
 
 find_package(Boost 1.85.0 REQUIRED COMPONENTS system filesystem date_time thread unit_test_framework)
 
+# Find and link Poco libraries
+#set(CMAKE_PREFIX_PATH ${CMAKE_SOURCE_DIR}/thirdparty)
+#find_package(Poco REQUIRED COMPONENTS Foundation Util)
 
 # Options to build each component
 option(BUILD_CORE "Build Core library" ON)
@@ -34,8 +37,11 @@ option(BUILD_TESTS "Build unit tests" ON)
 
 if(BUILD_CORE)
     add_library(Core
+        src/Core/HApplication.cpp
+        src/Core/HServerApplication.cpp
         src/Core/HObject.cpp
         src/Core/HString.cpp
+        src/Core/HProcessManager.cpp
     )
 endif()
 
@@ -79,5 +85,14 @@ if(BUILD_TESTS)
 
     add_executable(test7 tests/test7/test7.cpp)
     target_link_libraries(test7 Core Boost::system Boost::filesystem Boost::date_time Boost::thread)
+    
+    add_executable(test8 tests/test8/test8.cpp)
+    target_link_libraries(test8 Core)
+    
+    add_executable(test9 tests/test9/test9.cpp)
+    target_link_libraries(test9 Core)
+    
+    add_executable(test10 tests/test10/test10.cpp)
+    target_link_libraries(test10 Core)
 endif()
 
