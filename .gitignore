@@ -1,0 +1,21 @@
+# Ignore the build directory
+build/**
+
+# Ignore the build directory
+!build/README.md
+
+# Ignore all directories and their contents under thirdparty/lib/
+thirdparty/lib/
+
+# Ignore all directories and their contents under thirdparty/include/
+thirdparty/include/
+
+# Ignore all directories and their contents under thirdparty/src/
+thirdparty/src/**
+
+# Ignore all .tar.gz and .zip files under thirdparty/src/
+thirdparty/src/*.tar.gz
+thirdparty/src/*.zip
+
+# Track all .sh files under thirdparty/src/
+!thirdparty/src/**/*.sh
