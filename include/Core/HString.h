@@ -13,9 +13,9 @@ public:
     void append(const std::string& value);
     std::string data() const;
     void clear();
-    void chop(hsizetype n);
-    HString chopped(hsizetype len) const&;
-    HString chopped(hsizetype len) &&;
+    void chop(int64_t n);
+    HString chopped(int64_t len) const&;
+    HString chopped(int64_t len) &&;
     const char* c_str() const;
 
     // Overload the equality operators

@@ -18,7 +18,7 @@ void HString::clear() {
     m_data.clear();
 }
 
-void HString::chop(hsizetype n) {
+void HString::chop(int64_t n) {
     if (n < 0 || static_cast<std::size_t>(n) > m_data.size()) {
         m_data.clear();
     } else {
@@ -26,14 +26,14 @@ void HString::chop(hsizetype n) {
     }
 }
 
-HString HString::chopped(hsizetype len) const& {
+HString HString::chopped(int64_t len) const& {
     if (len < 0 || static_cast<std::size_t>(len) > m_data.size()) {
         return HString();
     }
     return HString(m_data.substr(0, m_data.size() - len).c_str());
 }
 
-HString HString::chopped(hsizetype len) && {
+HString HString::chopped(int64_t len) && {
     if (len < 0 || static_cast<std::size_t>(len) > m_data.size()) {
         return HString();
     }

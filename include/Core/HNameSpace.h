@@ -4,8 +4,6 @@
 
 namespace Ht {
 
-using hsizetype = int64_t; 
-
 enum class ScreenOrientation {
     PortraitOrientation,
     LandscapeOrientation
