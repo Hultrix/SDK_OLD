@@ -14,7 +14,7 @@ int main() {
     object.setObjectName(name);
     
     // Output the object's name
-    std::cout << "Object name: " << object.objectName().data() << std::endl;
+    std::cout << "Object name: " << object.objectName() << std::endl;
     
     // Set the object type to HWindow
     object.setObjectType(Ht::HObjectType::HWindow);

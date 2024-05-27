@@ -81,7 +81,7 @@ if(BUILD_TESTS)
     target_link_libraries(test5 Core)
     
     add_executable(test6 tests/test6/test6.cpp)
-    target_link_libraries(test6 Core Boost::unit_test_framework)
+    target_link_libraries(test6 Core)
 
     add_executable(test7 tests/test7/test7.cpp)
     target_link_libraries(test7 Core Boost::system Boost::filesystem Boost::date_time Boost::thread)

@@ -1,4 +1,3 @@
-#define BOOST_TEST_MODULE HObjectTest
 #include "HTest.h"
 #include "HObject.h"
 #include "HString.h"
@@ -6,7 +5,7 @@
 // Define the test cases within the Ht namespace
 namespace Ht {
 
-HT_AUTO_TEST_CASE(SetAndGetObjectName) {
+HT_TEST_CASE(SetAndGetObjectName) {
     // Create an instance of HObject
     HObject object;
 
@@ -18,10 +17,10 @@ HT_AUTO_TEST_CASE(SetAndGetObjectName) {
     object.setObjectName(name);
 
     // Check if the object name is set correctly
-    HT_CHECK_EQUAL(object.objectName().data(), "MyObject");
+    HT_CHECK_EQUAL(object.objectName(), "MyObject");
 }
 
-HT_AUTO_TEST_CASE(SetAndGetObjectType) {
+HT_TEST_CASE(SetAndGetObjectType) {
     // Create an instance of HObject
     HObject object;
 
@@ -33,4 +32,9 @@ HT_AUTO_TEST_CASE(SetAndGetObjectType) {
 }
 
 } // namespace Ht
+
+int main() {
+    HTest::instance().run();
+    return 0;
+}
 
