@@ -42,6 +42,8 @@ if(BUILD_CORE)
         src/Core/HString.cpp
         src/Core/HProcessManager.cpp
         src/Core/HSharedMemory.cpp
+        src/Core/HLogging.cpp
+        src/Core/HEnvironment.cpp
     )
 endif()
 
@@ -50,6 +52,7 @@ if(BUILD_GRAPHICS2D)
         src/Graphics2D/HMargins.cpp
         src/Graphics2D/HRect.cpp
         src/Graphics2D/HSize.cpp
+        src/Graphics2D/HBuffer.cpp
     )
 endif()
 
@@ -93,5 +96,11 @@ if(BUILD_TESTS)
     
     add_executable(test10 tests/test10/test10.cpp)
     target_link_libraries(test10 Core)
+    
+    add_executable(test11 tests/test11/test11.cpp)
+    target_link_libraries(test11 Core)
+    
+    add_executable(test12 tests/test12/test12.cpp)
+    target_link_libraries(test12 Core)
 endif()
 
