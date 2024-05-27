@@ -44,6 +44,8 @@ if(BUILD_CORE)
         src/Core/HSharedMemory.cpp
         src/Core/HLogging.cpp
         src/Core/HEnvironment.cpp
+        src/Core/HFile.cpp
+        src/Core/HDir.cpp
     )
 endif()
 
@@ -102,5 +104,11 @@ if(BUILD_TESTS)
     
     add_executable(test12 tests/test12/test12.cpp)
     target_link_libraries(test12 Core)
+    
+    add_executable(test13 tests/test13/test13.cpp)
+    target_link_libraries(test13 Core)
+    
+    add_executable(test14 tests/test14/test14.cpp)
+    target_link_libraries(test14 Core)
 endif()
 
