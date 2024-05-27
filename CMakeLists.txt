@@ -38,7 +38,6 @@ option(BUILD_TESTS "Build unit tests" ON)
 if(BUILD_CORE)
     add_library(Core
         src/Core/HApplication.cpp
-        src/Core/HServerApplication.cpp
         src/Core/HObject.cpp
         src/Core/HString.cpp
         src/Core/HProcessManager.cpp
@@ -59,7 +58,6 @@ if(BUILD_GUI)
         src/Gui/HCursor.cpp
         src/Gui/HWindow.cpp
         #src/Gui/HLayout.cpp
-        src/Gui/HMainWindow.cpp
     )
     target_link_libraries(Gui PRIVATE Core Graphics2D)
 endif()
@@ -95,8 +93,5 @@ if(BUILD_TESTS)
     
     add_executable(test10 tests/test10/test10.cpp)
     target_link_libraries(test10 Core)
-    
-    add_executable(test11 tests/test11/test11.cpp)
-    target_link_libraries(test11 Core)
 endif()
 

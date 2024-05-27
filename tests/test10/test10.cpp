@@ -1,42 +1,21 @@
-#include "HServerApplication.h"
+#include "HSharedMemory.h"
+#include "HString.h"
+#include <iostream>
 
-namespace Ht {
+int main() {
+    try {
+        Ht::HSharedMemory writer("/my_shared_memory");
+        Ht::HString message("Hello from writer program");
+        writer.write(message);
 
-class MyApplication : public HServerApplication {
-public:
-    MyApplication() {}
-    virtual ~MyApplication() {}
-
-protected:
-    virtual void initializeApplication() override {
-        std::cout << "Initializing MyApplication" << std::endl;
+        Ht::HSharedMemory reader("/my_shared_memory");
+        Ht::HString data = reader.read();
+        std::cout << "Data read from shared memory: " << data << std::endl;
+    } catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+        return 1;
     }
 
-    virtual void uninitializeApplication() override {
-        std::cout << "Uninitializing MyApplication" << std::endl;
-    }
-
-    virtual void defineApplicationOptions() override {
-        std::cout << "Defining MyApplication options" << std::endl;
-    }
-
-    virtual int main(const std::vector<HString>& args) override {
-        std::cout << "MyApplication running with arguments:" << std::endl;
-        for (const auto& arg : args) {
-            std::cout << arg << std::endl;
-        }
-        return 0;
-    }
-};
-
-} // namespace Ht
-
-int main(int argc, char** argv) {
-    Ht::MyApplication app;
-    app.initialize();
-    app.defineOptions();
-    int result = app.run(argc, argv);
-    app.uninitialize();
-    return result;
+    return 0;
 }
 
